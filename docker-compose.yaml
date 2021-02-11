@@ -25,7 +25,7 @@ services:
       - HUB_HOST=hub
       - MODULE=google.xml
     volumes:
-      - ./output/google:/usr/docker/test-output
+      - ./output:/usr/docker/test-output
   facebook:
     image: atudosan/simple-docker
     depends_on: 
@@ -36,4 +36,4 @@ services:
       - HUB_HOST=hub
       - MODULE=facebook.xml
     volumes:
-      - ./output/facebook:/usr/docker/test-output
+      - ./output:/usr/docker/test-output
