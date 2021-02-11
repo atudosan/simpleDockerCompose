@@ -24,8 +24,6 @@ services:
       - BROWSER=firefox
       - HUB_HOST=hub
       - MODULE=google.xml
-    volumes:
-      - ./output:/usr/docker/test-output
   facebook:
     image: atudosan/simple-docker
     depends_on: 
@@ -35,5 +33,3 @@ services:
       - BROWSER=chrome
       - HUB_HOST=hub
       - MODULE=facebook.xml
-    volumes:
-      - ./output:/usr/docker/test-output
