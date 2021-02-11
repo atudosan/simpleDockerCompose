@@ -1,0 +1,39 @@
+version: "3"
+services: 
+  hub:
+    image: selenium/hub:3.141.59
+  chrome:
+    image: selenium/node-chrome:3.141.59
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  firefox:
+    image: selenium/node-firefox:3.141.59
+    shm_size: '1gb'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  google:
+    image: atudosan/simple-docker
+    depends_on: 
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=hub
+      - MODULE=google.xml
+    volumes:
+      - ./output/google:/usr/docker/test-output
+  facebook:
+    image: atudosan/simple-docker
+    depends_on: 
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=facebook.xml
+    volumes:
+      - ./output/facebook:/usr/docker/test-output
